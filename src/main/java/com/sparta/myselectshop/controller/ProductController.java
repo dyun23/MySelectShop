@@ -40,4 +40,10 @@ public class ProductController {
         // 응답 보내기
         return productService.getProducts(userDetails.getUser());
     }
+
+    // 관리자 조회
+    @GetMapping("/admin/products")
+    public List<ProductResponseDto> getAllProducts() {
+        return productService.getAllProducts();
+    }
 }

@@ -50,4 +50,14 @@ public class ProductService {
         Product product = productRepository.findById(id).orElseThrow(() -> new NullPointerException("해당 상품을 찾을 수 없습니다."));
         product.updateByItemDto(itemDto);
     }
+
+    public List<ProductResponseDto> getAllProducts() {
+        List<Product> productList = productRepository.findAll();
+        List<ProductResponseDto> responseDtoList = new ArrayList<>();
+
+        for (Product product : productList) {
+            responseDtoList.add(new ProductResponseDto(product));
+        }
+        return responseDtoList;
+    }
 }
